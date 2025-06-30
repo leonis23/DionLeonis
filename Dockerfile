@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Basis-Image mit Node.js
 FROM node:18-alpine as build
 
@@ -26,3 +27,12 @@ EXPOSE 80
 
 # Startbefehl
 CMD ["nginx", "-g", "daemon off;"]
+=======
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+RUN rm -rf ./*
+
+COPY . .
+>>>>>>> 5b912981d4f36f512e54470f5747008695881c4b
