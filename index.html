@@ -3,36 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TEST OVERLAY</title>
-  <style>
-    #overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      z-index: 100;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <title>Schwarzer Peter</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Schwarzer Peter</h1>
-
   <div id="game"></div>
-
-  <div id="overlay" class="hidden">
-    <p id="wechselText">Spielerwechsel – Jetzt ist Spieler 1 dran.</p>
-    <button id="weiterBtn">Weiter</button>
-  </div>
 
   <script src="script.js"></script>
 </body>

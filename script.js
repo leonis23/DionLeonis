@@ -1,4 +1,5 @@
 console.log("JS wurde geladen ✅");
+
 const kartenPaare = ["🐶", "🐱", "🐭", "🐰", "🦊", "🐻", "🐼", "🐨"];
 let deck = [...kartenPaare, ...kartenPaare, "🃏"];
 deck = mischen(deck);
@@ -38,7 +39,6 @@ spieler1 = entfernePaare(spieler1);
 spieler2 = entfernePaare(spieler2);
 
 let aktuellerSpieler = 1;
-let zugGesperrt = false;
 
 function updateAnzeige() {
   const gameDiv = document.getElementById("game");
@@ -46,7 +46,7 @@ function updateAnzeige() {
 
   const spieler1Div = document.createElement("div");
   spieler1Div.innerHTML = "<h2>Spieler 1</h2>";
-  spieler1.forEach((k) => {
+  spieler1.forEach((k, i) => {
     const card = document.createElement("div");
     card.className = "karte";
     card.innerText = aktuellerSpieler === 1 ? k : "❓";
@@ -58,7 +58,7 @@ function updateAnzeige() {
 
   const spieler2Div = document.createElement("div");
   spieler2Div.innerHTML = "<h2>Spieler 2</h2>";
-  spieler2.forEach((k) => {
+  spieler2.forEach((k, i) => {
     const card = document.createElement("div");
     card.className = "karte";
     card.innerText = aktuellerSpieler === 2 ? k : "❓";
@@ -83,8 +83,6 @@ function zieheKarte(vonSpieler, zuSpieler) {
 }
 
 function handleKlick(gegnerNummer) {
-  if (zugGesperrt) return;
-
   let ergebnis;
   if (gegnerNummer === 2 && aktuellerSpieler === 1) {
     ergebnis = zieheKarte(spieler2, spieler1);
@@ -100,35 +98,29 @@ function handleKlick(gegnerNummer) {
     return;
   }
 
+  updateAnzeige();
+
   if (
     (spieler1.length === 1 && spieler1.includes("🃏") && spieler2.length === 0) ||
     (spieler2.length === 1 && spieler2.includes("🃏") && spieler1.length === 0)
   ) {
-    updateAnzeige();
     setTimeout(() => {
       const verlierer = spieler1.includes("🃏") ? "Spieler 1" : "Spieler 2";
       alert(`Spiel beendet! ${verlierer} hat den 🃏 und verliert!`);
     }, 100);
-    return;
   }
-
-  zugGesperrt = true;
-  const overlay = document.getElementById("overlay");
-  const wechselText = document.getElementById("wechselText");
-  overlay.classList.remove("hidden");
-  wechselText.innerText = `Spielerwechsel – Jetzt ist Spieler ${aktuellerSpieler} dran.`;
 }
 
 window.onload = () => {
-  const overlay = document.getElementById("overlay");
-  const weiterBtn = document.getElementById("weiterBtn");
-
-  overlay.classList.add("hidden");
   updateAnzeige();
 
-  weiterBtn.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-    zugGesperrt = false;
-    updateAnzeige();
+  const newGameBtn = document.createElement("button");
+  newGameBtn.textContent = "Neues Spiel";
+  newGameBtn.style.marginTop = "20px";
+  newGameBtn.style.padding = "10px 20px";
+  newGameBtn.style.fontSize = "16px";
+  newGameBtn.addEventListener("click", () => {
+    location.reload();
   });
+  document.body.appendChild(newGameBtn);
 };

@@ -1,0 +1,8 @@
+Daily 1
+(verloren)
+
+Daily 2:
+Dion und Leonis haben besprochen, dass das Kartenspiel noch deployed werden muss. 
+Da Dion Docker auf seinem Rechner noch einrichten muss, übernimmt Leonis das Deployment. 
+Dion kümmert sich im Gegenzug um die Pflege des GitHub-Repos, erstellt die noch fehlenden 
+Tasks und arbeitet an diesen weiter.
