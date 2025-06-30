@@ -25,25 +25,15 @@
   </style>
 </head>
 <body>
-  <h1>Test Overlay</h1>
+  <h1>Schwarzer Peter</h1>
 
-  <div id="overlay">
+  <div id="game"></div>
+
+  <div id="overlay" class="hidden">
     <p id="wechselText">Spielerwechsel – Jetzt ist Spieler 1 dran.</p>
     <button id="weiterBtn">Weiter</button>
   </div>
 
-  <script>
-    window.onload = () => {
-      console.log("JS wurde geladen ✅");
-
-      const overlay = document.getElementById("overlay");
-      const weiterBtn = document.getElementById("weiterBtn");
-
-      weiterBtn.addEventListener("click", () => {
-        console.log("Weiter geklickt");
-        overlay.classList.add("hidden");
-      });
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
